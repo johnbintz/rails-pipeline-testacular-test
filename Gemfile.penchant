@@ -1,0 +1,85 @@
+# ensure git hooks are always installed
+ensure_git_hooks!
+
+# everything in the :local env is assumed to be a sibling directory of this one
+defaults_for env(:local), :path => '../%s'
+
+# reference a github repository with gem 'my-gem', :github => 'username'
+property :github, :git => 'git://github.com/$1/%s.git'
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.9'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3'
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
+
+gem "haml"
+gem "haml-rails"
+gem "compass"
+gem "compass-rails"
+gem "jquery-rails"
+gem "pjax_rails", :git => "git://github.com/maletor/pjax_rails.git"
+gem "modernizr-rails"
+gem "thin"
+gem "rack-emstream"
+gem "rabl"
+gem "param_protected"
+gem "draper"
+gem "inherited_resources"
+gem "decorates_before_rendering"
+gem "capistrano", :require => nil
+gem "cap-pack", :require => nil, :git => "git://github.com/johnbintz/cap-pack.git"
+gem "formtastic"
+gem "formtastic-better_file_inputs", :git => "git://github.com/johnbintz/formtastic-better_file_inputs"
+gem "cocoon", :git => "git://github.com/johnbintz/cocoon.git", :branch => "formtastic_input"
+gem "virtus"
+group :development do
+  gem "rack-livereload"
+  gem "guard"
+  gem "guard-livereload"
+  gem "guard-cucumber"
+  gem "foreman"
+end
+
+group :test, :development, :cucumber do
+  gem "rspec"
+end
+
+group :cucumber do
+  gem "cucumber"
+  gem "cucumber-rails"
+  gem "database_cleaner"
+  gem "cuke-pack", :git => "git://github.com/johnbintz/cuke-pack.git"
+end
